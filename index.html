@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="compact-header">
+            <div class="header-left">
+                <h1><i class="fas fa-club"></i> BLACKJACK <i class="fas fa-spade"></i></h1>
+                <p class="tagline">Beat Alive at his favorite game</p>
+            </div>
+            <div class="header-right">
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-label">Balance:</span>
+                        <span class="stat-value" id="balance">$500</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Bet:</span>
+                        <span class="stat-value" id="bet-amount">$50</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Column: Game Area -->
+            <div class="game-area">
+                <!-- Dealer Section -->
+                <div class="player-section compact">
+                    <div class="section-header">
+                        <h3>Dealer: Alive Samuel</h3>
+                        <div class="score">Score: <span id="dealer-score">0</span></div>
+                    </div>
+                    <div class="cards-container" id="dealer-cards">
+                        <!-- Cards will be added here -->
+                    </div>
+                </div>
+
+                <!-- Player Section -->
+                <div class="player-section compact">
+                    <div class="section-header">
+                        <h3>Player</h3>
+                        <div class="score">Score: <span id="player-score">0</span></div>
+                    </div>
+                    <div class="cards-container" id="player-cards">
+                        <!-- Cards will be added here -->
+                    </div>
+                </div>
+
+                <!-- Message Area -->
+                <div class="message-area" id="message-area">
+                    <p>Place your bet and click DEAL to start</p>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="controls">
+                    <button id="deal-btn" class="btn btn-primary">
+                        <i class="fas fa-play"></i> DEAL
+                    </button>
+                    <button id="hit-btn" class="btn" disabled>
+                        <i class="fas fa-plus"></i> HIT
+                    </button>
+                    <button id="stand-btn" class="btn" disabled>
+                        <i class="fas fa-hand-paper"></i> STAND
+                    </button>
+                    <button id="reset-btn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> RESET
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Controls & Info -->
+            <div class="sidebar">
+                <!-- Betting Controls -->
+                <div class="sidebar-section">
+                    <h4><i class="fas fa-coins"></i> Betting</h4>
+                    <div class="bet-controls">
+                        <div class="bet-quick">
+                            <button class="bet-btn" data-amount="10">$10</button>
+                            <button class="bet-btn" data-amount="25">$25</button>
+                            <button class="bet-btn active" data-amount="50">$50</button>
+                            <button class="bet-btn" data-amount="100">$100</button>
+                        </div>
+                        <div class="bet-custom">
+                            <div class="custom-control">
+                                <button class="icon-btn" id="decrease-bet">-</button>
+                                <input type="number" id="custom-bet" value="50" min="10" max="500">
+                                <button class="icon-btn" id="increase-bet">+</button>
+                            </div>
+                        </div>
+                        <div class="bet-actions">
+                            <button class="small-btn" id="min-bet">Min</button>
+                            <button class="small-btn" id="max-bet">Max</button>
+                            <button class="small-btn" id="double-bet">2x</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="sidebar-section">
+                    <h4><i class="fas fa-chart-line"></i> Stats</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Games</div>
+                            <div class="stat-value" id="games-played">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Wins</div>
+                            <div class="stat-value win" id="wins-count">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Losses</div>
+                            <div class="stat-value loss" id="losses-count">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Win %</div>
+                            <div class="stat-value" id="win-rate">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Tips -->
+                <div class="sidebar-section tips">
+                    <h4><i class="fas fa-lightbulb"></i> Quick Tips</h4>
+                    <ul>
+                        <li>Stand on 17+</li>
+                        <li>Hit on 11 or less</li>
+                        <li>Dealer hits on 16</li>
+                        <li>Blackjack pays 3:2</li>
+                    </ul>
+                </div>
+
+                <!-- Game Info -->
+                <div class="sidebar-section info">
+                    <h4><i class="fas fa-info-circle"></i> Info</h4>
+                    <div class="winnings-display">
+                        <div class="winnings-label">Winnings:</div>
+                        <div class="winnings-value" id="winnings">$0</div>
+                    </div>
+                    <div class="max-win">
+                        <div class="label">Max Win:</div>
+                        <div class="value" id="max-win">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="compact-footer">
+            <p>Blackjack Game - by <a href="https://alivesamuel.netlify.app">Alive Samuel</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
